@@ -1,0 +1,291 @@
+/* styles.css */
+
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo básico para el body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Estilo para el header */
+header {
+    background-color: #5d04d9; /* Color de fondo */
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 255, 242, 0.993); /* Sombra suave */
+}
+
+/* Configura el main como un contenedor flex */
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+footer{
+    background-color: #5d04d9;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 242, 255, 0.993);
+}
+
+.title-product{
+    font-family: 'Courier New', Courier, monospace;
+    display: contents;
+    align-items: center;
+    max-width: max-content;
+    margin: auto;
+    color: black;
+}
+
+.footer-dev{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    margin: 0 auto;
+}
+
+.footer-alura{
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    max-width: max-content;
+}
+
+
+/* Contenedor del logo y la navegación */
+.logo-container {
+    display: flex;
+    align-items: center;
+    max-width: max-content;
+    margin: 0 auto;
+}
+
+/* Estilo para el logotipo */
+.logo {
+    height: 50px; /* Ajustar la altura del logo */
+}
+
+/* Costado Izquierdo, prodcustos*/
+
+/* Asegura que la sección de productos ocupe el 70% del ancho */
+.product-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 20px;
+    padding: 1rem;
+    /*height: 50vh; /* Limita la altura al 50% de la ventana */
+    overflow-y: auto; /* Permite desplazamiento si el contenido excede la altura */
+    position: relative; /* Para posicionar el mensaje de "No hay productos" */
+}
+
+/* Estilo para el mensaje cuando no hay productos */
+.no-products-message {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilo para cada card de producto */
+.card {
+    background-color: #5d04d9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(2, 236, 253);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%; /* Mantiene el ancho completo en el grid */
+    max-width: 280px; /* Ancho máximo de la card */
+    height: 350px; /* Altura total de la card */
+}
+
+/* Efecto hover en las cards */
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+}
+
+/* Estilo para la imagen del producto */
+.product-img {
+    width: 80%; /* La imagen ocupará todo el ancho disponible de la card */
+    height: 200px; /* La altura de la imagen será de 200px, puedes ajustarlo */
+    object-fit: contain; /* Mantiene la proporción de la imagen dentro del espacio sin recortarla */
+    display: block; /* Asegura que la imagen se muestre correctamente */
+    margin: 0 auto; /* Centra la imagen dentro de la card */
+}
+
+
+/* Estilo para la información del producto */
+.card-info {
+    padding: 1rem;
+    text-align: center;
+    height: calc(100% - 200px); /* Resta el tamaño de la imagen para que el contenido quede ajustado */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos no se amontonen */
+}
+
+/* Estilo para el nombre del producto */
+.product-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para el precio del producto */
+.product-price {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    color: #f39c12; /* Color amarillo */
+    font-weight: bold;
+}
+
+/* Contenedor de footer dentro de cada card */
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* Alinea el precio y el botón a los extremos */
+    align-items: center;
+    margin-top: auto; /* Empuja el contenido hacia el fondo de la card */
+}
+
+/* Estilo para el botón de eliminar (bote de basura) */
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* Efecto hover en el botón de eliminar */
+.delete-btn:hover {
+    color: #c0392b; /* Cambio de color al pasar el mouse */
+}
+
+/* Costado derecho, formato para agregar productos*/
+
+/* Estilo para la sección de agregar productos */
+.add-product-form {
+    background-color: #3b3b3b23; /* Fondo oscuro y transparencia */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    width: 30%; /* Asegura que el formulario ocupa el 30% del contenedor */
+    margin-left: 2rem; /* Espacio a la izquierda para separar del área de productos */
+}
+
+.add-product-form h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f39c12; /* Color amarillo */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.add-product-form label {
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    margin-top: 1rem;
+    color: #ffffff;
+}
+
+.add-product-form input {
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.add-product-form button {
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    margin-top: 1.5rem;
+    background-color: #5d04d9;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.add-product-form button:hover {
+    background-color: #3b029a;
+}
+
+/*Responsive*/
+
+/* Para pantallas grandes (computadoras de escritorio) */
+@media (min-width: 1024px) {
+    main {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+    .product-cards {
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+        gap: 20px;
+    }
+    .add-product-form {
+        width: 30%; /* Ocupa el 30% en pantallas grandes */
+    }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    main {
+        display: block; /* Se apilan las secciones */
+        padding: 1rem;
+    }
+    .product-cards {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tabletas */
+    }
+    .add-product-form {
+        width: 100%; /* Ocupa el 100% en la parte inferior */
+        margin-top: 2rem; /* Espacio arriba del formulario */
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+    main {
+        display: block; /* Se apilan las secciones */
+        padding: 1rem;
+    }
+    .product-cards {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    .add-product-form {
+        width: 100%; /* Ocupa el 100% */
+        margin-top: 2rem; /* Espacio arriba del formulario */
+    }
+}
+/* Texto más pequeño en móviles */
+@media (max-width: 767px) {
+    .product-name {
+        font-size: 1rem;
+    }
+    .product-description, .product-price {
+        font-size: 0.9rem;
+    }
+    .delete-btn {
+        font-size: 1.2rem;
+    }
+}

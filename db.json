@@ -1,0 +1,16 @@
+{
+  "productos": [
+    {
+      "id": "67cc",
+      "nombre": "Atari 2600+",
+      "precio": 880000,
+      "imagen": "https://i.blogs.es/61936c/sin-titulo/840_560.jpeg"
+    },
+    {
+      "id": "78b8",
+      "nombre": "Consola Nintendo 64 Pokemon Special Edition",
+      "precio": 2850000,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_958279-MCO54321892898_032023-O.webp"
+    }
+  ]
+}
