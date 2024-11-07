@@ -1,12 +1,38 @@
+// Importe las funciones que necesite de los SDK que necesite
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+
 document.addEventListener("DOMContentLoaded", function () {
     const productCards = document.getElementById("product-cards");
     const noProductsMessage = document.querySelector(".no-products-message");
     const addProductForm = document.getElementById("addProductForm");
 
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Configuración Firebase de su aplicación web
+    // Para Firebase JS SDK v7.20.0 y posteriores, measurementId es opcional
+    const firebaseConfig = {
+        apiKey: "AIzaSyA6qhpKX8ekqJNtwzOJhrVv1daglBSQA-E",
+        authDomain: "alurageek-aaf6d.firebaseapp.com",
+        projectId: "alurageek-aaf6d",
+        storageBucket: "alurageek-aaf6d.firebasestorage.app",
+        messagingSenderId: "337392668228",
+        appId: "1:337392668228:web:712bbd17d205e07779b611",
+        measurementId: "G-0D0Q9VVHS9"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
     // Función para obtener productos de json-server
     async function loadProducts() {
         try {
-            const response = await fetch("http://localhost:3000/productos");
+            const response = await fetch("https://alurageek-aaf6d-default-rtdb.firebaseio.com");
             const productos = await response.json();
 
             // Si hay productos, genera las tarjetas
@@ -39,6 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Función para agregar un nuevo producto
+    const addProduct = (product) => {
+        db.ref('productos').push(product);
+    };
     async function addProduct(event) {
         event.preventDefault();
 
@@ -55,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Enviar el nuevo producto al servidor
         try {
-            const response = await fetch("http://localhost:3000/productos", {
+            const response = await fetch("https://alurageek-aaf6d-default-rtdb.firebaseio.com", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -75,6 +104,11 @@ document.addEventListener("DOMContentLoaded", function () {
         addProductForm.reset();
     }
 
+    db.ref('productos').on('value', (snapshot) => {
+        const products = snapshot.val();
+        // Actualiza la interfaz aquí
+    });
+
     // Función para eliminar un producto
     async function deleteProduct(productId) {
         try {
@@ -88,6 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error al eliminar el producto:", error);
         }
     }
+
+    const deleteProduct = (id) => {
+        db.ref('productos/' + id).remove();
+    };
+
 
     // Llamar a la función para cargar los productos al inicio
     loadProducts();
